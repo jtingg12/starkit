@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Starkit</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="quiz.css">
+  <link rel="stylesheet" href="postit!.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/vanilla-caramel" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Winky+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/kiara-demo" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- Background image -->
+<div class="post-bg">
+  <div class="bg-part part1"></div>
+</div>
+
+<!-- Post It! -->
+<div id="notes-container"></div>
+
+<button id="addNoteButton" title="Create new note" aria-label="Create new note">
+  <i class="fas fa-plus"></i>
+</button>
+
+<div id="addNoteModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-card">
+    <h2 class="modal-title">Create Your Sticky Note Now!</h2>
+    <form id="noteForm" class="note-form" autocomplete="off">
+      <div class="form-group">
+        <label for="noteTitle" class="form-label">Name</label>
+        <input id="noteTitle" name="noteTitle" type="text" maxlength="30"
+          class="form-input"
+          placeholder="Type your note name here~" required>
+      </div>
+
+      <div class="form-group">
+        <label for="noteContent" class="form-label">Content</label>
+        <textarea id="noteContent" name="noteContent" rows="4"
+          class="form-textarea"
+          placeholder="Leave a fun note for everyone to see :)"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Choose your favourite sticky style~</label>
+        <div class="design-options">
+          <img src="images/postit!/sticky1.png" class="design-option design-selected" data-design="images/postit!/sticky1.png" alt="design1">
+          <img src="images/postit!/sticky2.png" class="design-option" data-design="images/postit!/sticky2.png" alt="design2">
+          <img src="images/postit!/sticky3.png" class="design-option" data-design="images/postit!/sticky3.png" alt="design3">
+          <img src="images/postit!/sticky4.png" class="design-option" data-design="images/postit!/sticky4.png" alt="design4">
+        </div>
+        <input type="hidden" id="noteDesign" value="images/postit!/sticky1.png">
+      </div>
+
+      <div class="form-buttons">
+        <button type="button" id="cancelNoteButton" class="cancel-btn">Cancel</button>
+        <button type="submit" id="createNoteSubmit" class="create-btn">Create Note</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Navigation Bar -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="index.html"><img src="images/logo.png" alt="Starkit Logo"></a>
+    </div>
+
+    <!-- Hamburger Icon -->
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Nav Buttons-->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="FoxFriends.html">Fox Friends</a></li>
+      <li><a href="postit!.html">Post It!</a></li>
+    </ul>
+
+    <!-- Nav Buttons (Right Side) -->
+    <div class="nav-buttons">
+      <a href="quiz.html" class="quiz-btn">Take the Quiz</a>
+      <a href="#" class="login-btn">Log In</a>
+      <img id="nav-avatar" class="nav-avatar" src="" alt="User Avatar">
+    </div>
+  </div>
+</nav>
+
+
+<!-- Login Overlay -->
+<div class="overlay" id="overlay">
+  <div class="login-card">
+    <div class="icon">
+      <img src="images/login/user.png" alt="User Icon">
+    </div>
+    <h2>Log In</h2>
+    <div class="msg" id="msg"></div>
+
+    <form id="loginForm" onsubmit="return false;">
+      <div class="field">
+        <input type="text" id="uname" placeholder="Email">
+        <img src="images/login/user.png" class="icon-imgs">
+      </div>
+      <div class="field">
+        <input type="password" id="pass" placeholder="Password">
+        <img src="images/login/pw.png" class="icon-img">
+      </div>
+
+      <div class="divider">
+        <span></span> OR <span></span>
+      </div>
+
+      <button class="google-btn" id="googleLogin">
+        <img src="images/login/google.png" alt="Google Logo"> Sign in with Google
+      </button>
+
+      <div class="btn-container">
+        <input type="submit" id="login-btn" value="Log In">
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Left: Logo + Slogan -->
+    <div class="footer-left">
+      <img src="images/logo.png" alt="Starkit Logo">
+      <p class="footer-slogan">
+        “Discover your inner fox,<br>guided by your star.”
+      </p>
+    </div>
+
+    <!-- Middle: Quick Links -->
+    <div class="footer-center">
+      <h3>Quick Links</h3>
+      <div class="links-grid">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <ul>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="FoxFriends.html">Fox Friends</a></li>
+        </ul>
+        <ul>
+          <li><a href="postit!.html">Post It!</a></li>
+          <li><a href="#">⋆˚☆˖°⋆｡° ✮˖.˚</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right: Contact Us -->
+    <div class="footer-right">
+      <h3>Contact Us</h3>
+      <p><span>Email:</span> <a href="mailto:starkit.support@gmail.com">starkit.support@gmail.com</a></p>
+      <div class="social-icons">
+        <a href="#"><img src="images/footer/ins.png" alt="Instagram"></a>
+        <a href="#"><img src="images/footer/xhs.png" alt="Xiaohongshu"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Starkit. All Rights Reserved.</div>
+</footer>
+
+<!-- Google Sign In -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+
+<script>
+  // Google Log In
+  window.onload = function() {
+    google.accounts.id.initialize({
+      client_id: "53254119460-3hj1559jtb4c2kthhqjijokjevjk8ua4.apps.googleusercontent.com",
+      callback: handleCredentialResponse
+    });
+  };
+</script>
+
+<div id="g_id_onload"
+     data-client_id="53254119460-3hj1559jtb4c2kthhqjijokjevjk8ua4.apps.googleusercontent.com"
+     data-callback="handleCredentialResponse">
+</div>
+
+<!-- Hidden Google login information container -->
+<div id="user-info" style="display:none;">
+  <img id="avatar" src="" alt="Avatar">
+  <p id="name"></p>
+  <p id="email"></p>
+</div>
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+<script src="about.js"></script>
+<script src="quiz.js"></script>
+<script src="postit!.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Starkit</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="quiz.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/vanilla-caramel" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Winky+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/kiara-demo" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- Background image -->
+<div class="quiz-bg">
+  <div class="bg-part part1"></div>
+  <div class="bg-part part2"></div>
+</div>
+
+<!-- Quiz Header Section -->
+<section class="quiz-header">
+
+  <div class="quiz-arc-bg"></div>
+
+  <div class="container">
+    <div class="quiz-title-section">
+      <img src="images/quiz/shiningfox.png" alt="Shining Fox" class="fox-decoration left-fox fade-in-up delay">
+      
+      <div class="quiz-title-content">      
+        <h1 class="quiz-main-title fade-in-up">Welcome to the <span class="quiz-highlight">Starkit Quiz !</span></h1>
+        <p class="quiz-subtitle fade-in-up delay-1">
+          Answer <span class="quiz-subhighlight">8 fun</span> and <span class="quiz-subhighlight">easy</span> questions to find out which fox shines just like you~<br>
+          Remember: there are no right or wrong answers — just follow your heart!
+        </p>
+      </div>
+      
+      <img src="images/quiz/shiningfox.png" alt="Shining Fox" class="fox-decoration right-fox fade-in-up delay">
+    </div>
+
+    <!-- Steps Section -->
+    <!-- Orange dashed line -->
+    <div class="how-it-works-lines fade-in-up delay-4">
+      <div class="line1-dashed"></div>
+      <div class="line2-dashed"></div>
+    </div>
+
+    <div class="steps-main-container">
+      <!-- First row: step1 and step2 side by side -->
+      <div class="steps-row">
+        <!-- Step 1 -->
+        <div class="steps-container1">
+          <div class="step-1 fade-in-up delay-2">
+            <div class="step1">
+              <img src="images/home/step1.png" alt="Key">
+            </div>
+            <div class="step-content">
+              <h3 class="step-title1">Step 1: Answer 8 fun questions</h3>
+              <p class="step-description1">"Pick your favorites and<br>follow your heart!"</p>
+              <div class="step-icon1">
+                <img src="images/home/step1a.gif" alt="Questions Icon">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="steps-container2">
+          <div class="step-2 fade-in-up delay-3">
+            <div class="step2">
+              <img src="images/home/step2.png" alt="Blink">
+            </div>
+            <div class="step-content">
+              <h3 class="step-title2">Step 2: Meet your fox buddy</h3>
+              <p class="step-description2">"Say hello to the fox that's<br>just like you!"</p>
+              <div class="step-icon2">
+                <img src="images/home/step2a.gif" alt="Fox Icon">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Second line: step3 in the middle -->
+      <div class="steps-container3">
+        <div class="step-3 fade-in-up delay-4">
+          <div class="step3">
+            <img src="images/home/step3.png" alt="Star">
+          </div>
+          <div class="step-content">
+            <h3 class="step-title3">Step 3: Get your Star Identity Card</h3>
+            <p class="step-description3">"Shine bright with your very own star card and discover your true self!"</p>
+            <div class="step-icon3">
+              <img src="images/home/step3a.gif" alt="Star Card Icon">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quiz Question Section -->
+<section class="quiz-question">
+  <div class="container">
+    <!-- Main Title -->
+    <div class="quiz-discovery-title fade-in-up">
+      <h2>Discover which little fox shines as bright as you!</h2>
+    </div>
+
+    <!-- Question Number -->
+    <div class="question-header fade-in-up delay-1">
+      <h3 class="question-number">Question 1 of 8</h3>
+      <!-- Progress Bar -->
+      <div class="progress-container">
+        <div class="progress-track" style="--progress: 12.5%">
+          <div class="progress-fill"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Question Content -->
+    <div class="question-content-wrapper fade-in-up delay-2">
+      <!-- Question Text -->
+      <div class="question-text-box">
+        <p class="question-statement" data-en="Morning arrives, and you're ready to embark on an adventure! What do you most want to bring?" data-cn="清晨来临，你准备好踏上冒险之旅了！你最想带什么？">
+          Morning arrives, and you're ready to embark on an adventure! What do you most want to bring?
+        </p>
+      </div>
+
+      <!-- Options List -->
+      <div class="options-list">
+        <!-- Option 1 -->
+        <div class="option-item" data-fox="red-fox" data-index="1">
+          <div class="option-star">
+            <svg class="star-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <!-- Star -->
+              <path class="star-outline" 
+                    d="M12 3L14.2 8.5L20 9.5L15.5 13.5L17 19.5L12 16.5L7 19.5L8.5 13.5L4 9.5L9.8 8.5L12 3Z" 
+                    stroke="#FF9C4C" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+              <path class="star-fill" 
+                    d="M12 3L14.2 8.5L20 9.5L15.5 13.5L17 19.5L12 16.5L7 19.5L8.5 13.5L4 9.5L9.8 8.5L12 3Z" 
+                    fill="none"/>
+            </svg>
+          </div>
+          <div class="option-content">
+            <span class="option-text" data-en="A small backpack with a map inside" data-cn="一个装着地图的小包">
+              A small backpack with a map inside
+            </span>
+          </div>
+        </div>
+
+        <!-- Option 2 -->
+        <div class="option-item" data-fox="fennec-fox" data-index="2">
+          <div class="option-star">
+            <svg class="star-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <!-- Star -->
+              <path class="star-outline" 
+                    d="M12 3L14.2 8.5L20 9.5L15.5 13.5L17 19.5L12 16.5L7 19.5L8.5 13.5L4 9.5L9.8 8.5L12 3Z" 
+                    stroke="#FF9C4C" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+              <path class="star-fill" 
+                    d="M12 3L14.2 8.5L20 9.5L15.5 13.5L17 19.5L12 16.5L7 19.5L8.5 13.5L4 9.5L9.8 8.5L12 3Z" 
+                    fill="none"/>
+            </svg>
+          </div>
+          <div class="option-content">
+            <span class="option-text" data-en="A walkman playing cheerful songs" data-cn="一个播放着欢快歌曲的随身听">
+              A walkman playing cheerful songs
+            </span>
+          </div>
+        </div>
+
+        <!-- Option 3 -->
+        <div class="option-item" data-fox="gray-fox" data-index="3">
+          <div class="option-star">
+            <svg class="star-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <!-- Star -->
+              <path class="star-outline" 
+                    d="M12 3L14.2 8.5L20 9.5L15.5 13.5L17 19.5L12 16.5L7 19.5L8.5 13.5L4 9.5L9.8 8.5L12 3Z" 
+                    stroke="#FF9C4C" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+              <path class="star-fill" 
+                    d="M12 3L14.2 8.5L20 9.5L15.5 13.5L17 19.5L12 16.5L7 19.5L8.5 13.5L4 9.5L9.8 8.5L12 3Z" 
+                    fill="none"/>
+            </svg>
+          </div>
+          <div class="option-content">
+            <span class="option-text" data-en="A sturdy walking stick" data-cn="一根结实的拐杖">
+              A sturdy walking stick
+            </span>
+          </div>
+        </div>
+
+        <!-- Option 4 -->
+        <div class="option-item" data-fox="arctic-fox" data-index="4">
+          <div class="option-star">
+            <svg class="star-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <!-- Star -->
+              <path class="star-outline" 
+                    d="M12 3L14.2 8.5L20 9.5L15.5 13.5L17 19.5L12 16.5L7 19.5L8.5 13.5L4 9.5L9.8 8.5L12 3Z" 
+                    stroke="#FF9C4C" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+              <path class="star-fill" 
+                    d="M12 3L14.2 8.5L20 9.5L15.5 13.5L17 19.5L12 16.5L7 19.5L8.5 13.5L4 9.5L9.8 8.5L12 3Z" 
+                    fill="none"/>
+            </svg>
+          </div>
+          <div class="option-content">
+            <span class="option-text" data-en="A soft, comfortable scarf" data-cn="一条柔软舒适的围巾">
+              A soft, comfortable scarf
+            </span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Loading animation -->
+      <div class="quiz-loading-wrapper" style="display: none;">
+        <div class="loading-wave">
+          <img src="images/quiz/red.png" alt="red" class="loading-icon red">
+          <img src="images/quiz/orange.png" alt="orange" class="loading-icon orange">
+          <img src="images/quiz/green.png" alt="green" class="loading-icon green">
+          <img src="images/quiz/blue.png" alt="blue" class="loading-icon blue">
+        </div>
+      </div>
+
+      <!-- Done page -->
+      <div class="quiz-done-wrapper" style="display: none;">
+        <!-- Biu Animation -->
+        <div class="quiz-done-animation">
+          <img src="images/quiz/biu.gif" alt="Biu Animation" class="biu-animation">
+        </div>
+        
+        <!-- Done text -->
+        <div class="quiz-done-text">
+          <p class="done-title" data-en="Yay! You did it!" data-cn="太棒了！你完成了！">
+            Yay! You did it!
+          </p>
+          <p class="done-subtitle" data-en="Now it's time to meet your fox friend!" data-cn="现在快去见见你的狐狸小伙伴吧！">
+            Now it's time to meet your fox friend!
+          </p>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="options-divider"></div>
+
+      <!-- Bottom Navigation -->
+      <div class="quiz-bottom-nav fade-in-up delay-3">
+        <button class="prev-question-btn" style="display: none;">
+          <svg class="prev-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="prev-text" data-en="Previous" data-cn="上一题">Previous</span>
+        </button>
+        
+        <button class="language-switch-btn">
+          <img src="images/quiz/translate.png" alt="Translate" class="translate-icon">
+          <span class="lang-text">EN/中文</span>
+        </button>
+        
+        <button class="next-question-btn" disabled>
+          <span class="next-text" data-en="Next" data-cn="下一题">Next</span>
+          <svg class="next-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+
+          <svg class="check-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" style="display: none;">
+            <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Quiz Result Section -->
+<section class="quiz-result-section" style="display: none;">
+  <div class="result-container">
+    <div class="result-content">
+      <!-- Left side: Card area -->
+      <div class="result-left">
+        <!-- Card section -->
+        <div class="fox-card-container">
+          <div class="fox-card-back">
+            <img src="images/result/ruby.f.png" alt="Ruby Fox Card Back" class="fox-card-back-img">
+          </div>
+          <div class="fox-card-front">
+            <img src="images/result/ruby.png" alt="Ruby Fox" class="fox-card-front-img">
+          </div>
+        </div>
+        
+        <!-- Fox Name -->
+        <h2 class="fox-name">Ruby (Red Fox)</h2>
+      </div>
+      
+      <!-- Right side: Text and button area -->
+      <div class="result-right">
+        <!-- Frosted glass text frame -->
+        <div class="fox-text">
+          <p>Ruby is full of energy, confidence, and courage. You enjoy taking action, exploring new ideas, and solving challenges in your own creative way. You are the kind of fox who is always eager to move forward and dares to create.</p>
+          <p>You enjoy being a leader in a team and often take the first step when others hesitate. When something feels difficult for you, you won't give up easily. Instead, you think quickly and find a way to succeed.</p>
+          <p>People around you love your bright and positive energy. Sometimes you might feel a little impatient because things are moving slowly, but that's only because you're eager to achieve your goals. Remember, it's okay to slow down and enjoy the journey.</p>
+          <p>Ruby teaches us that courage is more than just being strong; it means believing in yourself and using your heart to guide others.</p>
+          <p class="signature">Keep shining, little Ruby. The world feels brighter with you in it.</p>
+        </div>
+        
+        <!-- Button area -->
+        <div class="result-buttons">
+          <!-- Left button -->
+          <div class="buttons-left">
+            <button class="result-btn do-it-again-btn ruby">
+              <img src="images/result/redo1.gif" alt="Redo" class="btn-gif left-gif">
+              <span class="btn-text">Do It Again~</span>
+            </button>
+            <button class="result-btn view-fox-friends-btn ruby">
+              <span class="btn-text">View Fox Friends!</span>
+              <img src="images/result/magic.gif" alt="Magic" class="btn-gif right-gif">
+            </button>
+          </div>
+          
+          <!-- Right button -->
+          <div class="buttons-right">
+            <button class="result-btn open-it-btn ruby">
+              <img src="images/result/openit1.gif" alt="Open It" class="btn-gif left-gif">
+              <span class="btn-text">Open It!</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Enter name get ID card Section -->
+<section class="name-input-section" style="display: none;">
+  <div class="name-input-container">
+    <!-- 顶部标题 -->
+    <div class="name-input-header">
+      <h2 class="name-input-title">Ready to See Your <span class="name-input-highlight">Star Identity Card?</span></h2>
+      <p class="name-input-subtitle">Enter your name to get your personalized identity card!</p>
+    </div>
+    
+    <!-- 阶段1：输入名字 -->
+    <div class="name-input-stage" id="inputStage">
+      <div class="input-wrapper">
+        <div class="input-label">Enter Your Name</div>
+        <input type="text" id="userNameInput" class="name-input-field" placeholder="Your name here...">
+        <button id="nameConfirmBtn" class="name-confirm-btn">Confirm</button>
+      </div>
+    </div>
+    
+    <!-- 阶段2：显示身份卡 -->
+    <div class="id-card-stage" id="cardStage" style="display: none;">
+      <!-- 身份卡预览 -->
+      <div class="id-card-preview" id="idCardPreview">
+        <img src="" alt="Identity Card Background" class="id-card-image">
+        
+        <!-- 覆盖在图片上的文本 -->
+        <div class="id-card-overlay">
+          <div class="name-display" id="previewNameDisplay">Your Name</div>
+          <div class="personality-display" id="previewPersonalityDisplay">Cheerful • Friendly • Curious</div>
+          <div class="date-display" id="previewDateDisplay">16 December 2025</div>
+        </div>
+      </div>
+      
+      <!-- 按钮区域 -->
+      <div class="card-buttons">
+        <button class="back-to-result-btn">
+          <svg class="back-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Back to Result</span>
+        </button>
+        
+        <!-- <div class="action-buttons">
+          <button class="download-id-btn">
+            <svg class="download-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Download</span>
+          </button>
+           -->
+
+
+          <button class="download-id-btn" id="downloadCardBtn">
+    <svg class="download-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>Download</span>
+</button>
+
+          <button class="share-id-btn">
+            <svg class="share-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Share</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Navigation Bar -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <a href="index.html"><img src="images/logo.png" alt="Starkit Logo"></a>
+    </div>
+
+    <!-- Hamburger Icon -->
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Nav Buttons-->
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="FoxFriends.html">Fox Friends</a></li>
+      <li><a href="postit!.html">Post It!</a></li>
+    </ul>
+
+    <!-- Nav Buttons (Right Side) -->
+    <div class="nav-buttons">
+      <a href="quiz.html" class="quiz-btn">Take the Quiz</a>
+      <a href="#" class="login-btn">Log In</a>
+      <img id="nav-avatar" class="nav-avatar" src="" alt="User Avatar">
+    </div>
+  </div>
+</nav>
+
+
+<!-- Login Overlay -->
+<div class="overlay" id="overlay">
+  <div class="login-card">
+    <div class="icon">
+      <img src="images/login/user.png" alt="User Icon">
+    </div>
+    <h2>Log In</h2>
+    <div class="msg" id="msg"></div>
+
+    <form id="loginForm" onsubmit="return false;">
+      <div class="field">
+        <input type="text" id="uname" placeholder="Email">
+        <img src="images/login/user.png" class="icon-imgs">
+      </div>
+      <div class="field">
+        <input type="password" id="pass" placeholder="Password">
+        <img src="images/login/pw.png" class="icon-img">
+      </div>
+
+      <div class="divider">
+        <span></span> OR <span></span>
+      </div>
+
+      <button class="google-btn" id="googleLogin">
+        <img src="images/login/google.png" alt="Google Logo"> Sign in with Google
+      </button>
+
+      <div class="btn-container">
+        <input type="submit" id="login-btn" value="Log In">
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Left: Logo + Slogan -->
+    <div class="footer-left">
+      <img src="images/logo.png" alt="Starkit Logo">
+      <p class="footer-slogan">
+        “Discover your inner fox,<br>guided by your star.”
+      </p>
+    </div>
+
+    <!-- Middle: Quick Links -->
+    <div class="footer-center">
+      <h3>Quick Links</h3>
+      <div class="links-grid">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <ul>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="FoxFriends.html">Fox Friends</a></li>
+        </ul>
+        <ul>
+          <li><a href="postit!.html">Post It!</a></li>
+          <li><a href="#">⋆˚☆˖°⋆｡° ✮˖.˚</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right: Contact Us -->
+    <div class="footer-right">
+      <h3>Contact Us</h3>
+      <p><span>Email:</span> <a href="mailto:starkit.support@gmail.com">starkit.support@gmail.com</a></p>
+      <div class="social-icons">
+        <a href="#"><img src="images/footer/ins.png" alt="Instagram"></a>
+        <a href="#"><img src="images/footer/xhs.png" alt="Xiaohongshu"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 Starkit. All Rights Reserved.</div>
+</footer>
+
+<!-- Google Sign In -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+
+<script>
+  // Google Log In
+  window.onload = function() {
+    google.accounts.id.initialize({
+      client_id: "53254119460-3hj1559jtb4c2kthhqjijokjevjk8ua4.apps.googleusercontent.com",
+      callback: handleCredentialResponse
+    });
+  };
+</script>
+
+<div id="g_id_onload"
+     data-client_id="53254119460-3hj1559jtb4c2kthhqjijokjevjk8ua4.apps.googleusercontent.com"
+     data-callback="handleCredentialResponse">
+</div>
+
+<!-- Hidden Google login information container -->
+<div id="user-info" style="display:none;">
+  <img id="avatar" src="" alt="Avatar">
+  <p id="name"></p>
+  <p id="email"></p>
+</div>
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+<script src="about.js"></script>
+<script src="quiz.js"></script>
+
+
+</body>
+</html>
