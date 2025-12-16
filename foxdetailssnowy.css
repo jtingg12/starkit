@@ -1,0 +1,688 @@
+/* --- Ruby Hero Section 头部区域样式 --- */
+.ruby-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.ruby-hero-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- 角色背后的光圈 (Halo) 样式 --- */
+.ruby-halo {
+    position: absolute;
+    width: 480px; 
+    height: 480px; 
+    border-radius: 50%; 
+    z-index: 15; 
+    background: radial-gradient(
+        circle, 
+        rgba(61, 219, 255, 0.8) 0%,
+        rgba(153, 213, 255, 0.5) 50%,
+        rgba(255, 204, 153, 0) 70% 
+    );
+    filter: blur(60px); 
+    top: 10%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    animation: pulseHalo 10s infinite alternate;
+}
+
+@keyframes pulseHalo {
+    from {
+        opacity: 0.9;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+.ruby-name-wrapper {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+     filter: blur(6px); 
+     z-index: 10;
+}
+
+.breathing-animation {
+    animation: breathing 4s ease-in-out infinite; /* 应用呼吸动画 */
+    /* 注意：由于 .ruby-name-bg 在 .ruby-name-wrapper 内，
+       我们需要在 JS 中控制 breathing-animation 的延迟启动，
+       以保证入场动画结束后再开始呼吸。 */
+}
+
+/* 渐变大字背景 RUBY */
+.ruby-name-bg {
+    position: relative;
+    font-family: 'Kiara Demo', cursive;
+    font-size: 25vw;
+    line-height: 1;
+    color: transparent; 
+    background: linear-gradient(
+        180deg, 
+        #105075 20%,      
+        #2696D8 40%,      
+        rgba(255, 223, 204, 0.4) 80%, 
+        rgb(255, 225, 207) 100% 
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0 0 10px rgba(17, 190, 248, 0.5);
+    user-select: none;
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* 角色图片 */
+.ruby-character-img {
+    position: relative;
+    width: 380px; 
+    height: auto;
+    object-fit: contain;
+    z-index: 20; 
+}
+
+/* --- 信息卡片 (毛玻璃圆框) --- */
+.info-card {
+    position: absolute;
+    border-radius: 50%; 
+    background: rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.187);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); 
+    border: 2px solid rgba(255, 255, 255, 0.3); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Vanilla Caramel', sans-serif;
+    transition: transform 0.3s ease-in-out;
+    z-index: 30; 
+}
+
+.info-card:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #257BA5;
+    margin-bottom: 5px;
+}
+
+.card-content {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #257BA5;
+}
+
+.card-1 {
+    top: 6vh;
+    right: 7%;
+    width: 160px; 
+    height: 160px;
+}
+
+.card-2 {
+    top: 55vh;
+    right: 1%;
+    transform: translateX(50%); 
+    width: 180px; 
+    height: 180px;
+}
+
+.card-3 {
+    top: 45vh;
+    right: 75%;
+    width: 260px; 
+    height: 260px;
+}
+
+/* 持续悬浮的类名 */
+.float-animation {
+    animation-name: floating;
+    animation-duration: 4s; /* 浮动动画时长 */
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite; /* **关键：持续重复** */
+}
+
+/* --- SEE ALL --- */
+.see-all-btn {
+    position: fixed; 
+    bottom: 30px; 
+    left: 50%;
+    transform: translateX(-50%); 
+    z-index: 100; 
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+    text-decoration: none; 
+    font-family: 'Playpen Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2A3792; 
+    border-bottom: 2px solid #2A3792; 
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.see-all-btn i {
+    font-size: 1rem;
+    transition: transform 0.3s;
+}
+
+.see-all-btn:hover {
+    color: #0007d4;
+    border-bottom-color: #0007d4;
+}
+
+.see-all-btn:hover i {
+    transform: translate(1px, -1px); 
+}
+
+/* --- 1. 通用入场动画 --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 50px, 0); /* 从下方滑入 */
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.fade-in-up {
+    opacity: 0; /* 默认隐藏，等待 JS 触发 */
+    animation-name: fadeInUp;
+    animation-duration: 1.2s; /* 入场动画时长 */
+    animation-fill-mode: forwards; /* 动画结束后保持最终状态 */
+}
+
+/* --- 2. RUBY 名字持续呼吸动画 --- */
+@keyframes breathing {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.01);
+        opacity: 0.95;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* --- 3. Info Card 持续悬浮效果 (新定义) --- */
+@keyframes floating {
+    /* 动画幅度可以微调 */
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg); 
+    }
+    50% { 
+        /* 沿着 Y 轴轻微浮动，并带有轻微的旋转，让悬浮感更自然 */
+        transform: translate(0, -8px) rotate(1deg); 
+    }
+}
+
+/* --- 固定容器样式 (与之前相同) --- */
+#character-pin-container {
+  position: fixed;
+  top: 50%; 
+  left: 40%; 
+  transform: translate(-50%, -50%); /* 自身居中 */
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0; /* 默认隐藏 */
+  width: 0; 
+  height: 0;
+  /* 容器的过渡可以保留，用于初次入场 */
+  transition: opacity 0.5s ease-in-out; 
+}
+
+/* 内部图片样式 */
+.pinned-char-img {
+  position: absolute; 
+  width: 380px; 
+  height: auto;
+  object-fit: contain;
+  /* 关键：移除所有的 CSS transition! 动画将由 GSAP 驱动 */
+  /* 移除 transition: transform, opacity; */
+  
+  /* 使用 transform: translate(0, -50%) 辅助定位，x轴由 GSAP 控制 */
+  transform: translate(0, -50%); 
+  left: 0; /* 辅助定位 */
+  top: 50%; /* 辅助定位 */
+  
+  opacity: 0; /* 默认设置为 0，由 GSAP 控制渐显/渐隐 */
+}
+
+/* 隐藏 Section 内部的原有图片 (确保其不影响布局) */
+.detail-section .section-char-img {
+  opacity: 0; 
+  pointer-events: none;
+  transition: none; /* 确保没有 CSS 动画干扰 */
+}
+
+/* --- 滚动内容区域样式 --- */
+.details-content {
+ position: relative;
+ z-index: 5; 
+}
+
+.detail-section {
+   position: relative;
+   width: 100%;
+   min-height: 100vh; /* 确保有足够的滚动空间 */
+   display: flex;
+   align-items: center;
+   padding: 100px 5%; 
+   box-sizing: border-box;
+   overflow: hidden;
+}
+
+/* 文本区块的布局 */
+.content-wrapper {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.text-block {
+  width: 60%; /* 文本占据一半空间 */
+  padding: 0 40px;
+  box-sizing: border-box;
+  color: #56AEFF;
+  font-family: 'Playpen Sans', sans-serif;
+  font-size: 1.2rem;
+  text-align: justify;
+  z-index: 2; 
+}
+
+.section-title {
+  font-family: 'Vanilla Caramel', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #69ADE6;
+  margin-bottom: 25px;
+}
+
+/* 角色占位符（用于占据空间） */
+.character-placeholder {
+  width: 40%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2; 
+}
+
+/* 文本块和图片位置 */
+.right-character-section .text-block {
+ order: 0; /* 文本在左 */
+}
+
+.right-character-section .character-placeholder {
+ order: 1; /* 角色在右 */
+}
+
+/* 角色和文本顺序调整 */
+.left-character-section .text-block {
+  order: 1; /* 文本在右 */
+}
+
+.left-character-section .character-placeholder {
+  order: 0; /* 角色在左 */
+}
+
+.section-char-img {
+  width: 70%; /* 图片在容器中占据 80% 宽度 */
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* --- 波浪分割效果 (Wave Divider) --- */
+
+.wave-bg {
+  position: relative;
+}
+
+.wave-bg::before {
+  content: '';
+  position: absolute;
+  bottom: 0; 
+  left: 0;
+  width: 100%;
+  height: 730px; 
+  z-index: 1; 
+  background-image: url('images/foxfriends/secback4.svg');
+  background-color: transparent;
+  background-size: 100% 100%; 
+  background-repeat: no-repeat;
+  background-position: bottom;
+  
+  /* 调整位置，让下一 Section 的顶部完美衔接 */
+  transform: translateY(-10px); 
+}
+
+/* 确保下一 section 的顶部可以覆盖波浪的下半部分 */
+.detail-section + .detail-section {
+    position: relative;
+    z-index: 3; 
+}
+
+
+/* --- GIF 装饰样式 (Boom Background) --- */
+
+/* GIF 装饰容器 */
+.detail-section::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1; /* 在文本和角色下方，波浪上方 */
+}
+
+.boom-bg::after {
+  /* 假设您有 boom1.gif 文件，并设置 9 个位置 */
+  background: 
+     /* 左上角 */
+     url('images/foxfriends/boom4.gif') no-repeat 5% 5%,
+     url('images/foxfriends/boom4.gif') no-repeat 25% 30%,
+     url('images/foxfriends/boom4.gif') no-repeat 2% 80%,
+     
+     /* 中间 */
+     url('images/foxfriends/boom4.gif') no-repeat 50% 15%,
+     url('images/foxfriends/boom4.gif') no-repeat 40% 60%,
+     url('images/foxfriends/boom4.gif') no-repeat 60% 85%,
+     
+     /* 右侧 */
+     url('images/foxfriends/boom4.gif') no-repeat 80% 10%,
+     url('images/foxfriends/boom4.gif') no-repeat 95% 75%,
+     url('images/foxfriends/boom4.gif') no-repeat 65% 45%;
+     
+  /* 根据您 GIF 的实际大小调整缩放 */
+  background-size: 80px, 60px, 40px, 50px, 90px, 70px, 60px, 80px, 50px; 
+  opacity: 0.6; /* 降低透明度，作为背景装饰 */
+}
+
+
+.pinwheel-bg::after {
+  /* 假设您有 boom1.gif 文件，并设置 9 个位置 */
+  background: 
+     /* 左上角 */
+     url('images/foxfriends/search.gif') no-repeat 5% 5%,
+     url('images/foxfriends/search.gif') no-repeat 35% 2%,
+     url('images/foxfriends/search.gif') no-repeat 14% 80%,
+     
+     /* 中间 */
+     url('images/foxfriends/search.gif') no-repeat 60% 15%,
+     url('images/foxfriends/search.gif') no-repeat 40% 60%,
+     url('images/foxfriends/search.gif') no-repeat 60% 92%,
+     
+     /* 右侧 */
+     url('images/foxfriends/search.gif') no-repeat 90% 5%,
+     url('images/foxfriends/search.gif') no-repeat 95% 78%,
+     url('images/foxfriends/search.gif') no-repeat 75% 45%;
+     
+  /* 根据您 GIF 的实际大小调整缩放 */
+  background-size: 80px, 60px, 90px, 50px, 80px, 70px, 90px, 80px, 50px; 
+  opacity: 0.3; /* 降低透明度，作为背景装饰 */
+}
+
+.start-button {
+  display: inline-flex;
+  background: #e3f9ff;
+  gap: 15px;
+  padding: 12px 30px;
+  border-radius: 40px;
+  font-size: 1.8rem;
+  font-family: "Vanilla Caramel", cursive;
+  letter-spacing: 1px;
+  color: #257BA5;
+  text-decoration: none;
+  box-shadow: 0 6px 0 #4b83a1;
+  transition: 0.25s;
+  align-items: center;
+  justify-content: center;
+  margin-left: 37%;
+  margin-top: 5%;
+}
+
+.start-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 0 #79c5f4;
+}
+
+.ruby-icon {
+  width: 43px;
+  height: 54px;
+  margin-top: 1%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    /* 1. 英雄区域容器调整 */
+    .ruby-hero-section {
+        height: auto; 
+        min-height: 100vh; /* 允许高度根据内容调整 */
+        padding-top: 100px; /* 顶部填充 */
+        padding-bottom: 100px; /* 底部填充 */
+    }
+
+    .ruby-hero-container {
+        flex-direction: column; /* 垂直堆叠：大字 -> 角色 -> 卡片 */
+        align-items: center;
+        justify-content: flex-start; /* 从顶部开始堆叠 */
+    }
+
+    /* 2. RUBY 名字调整 */
+    .ruby-name-wrapper {
+        position: absolute; /* 移除绝对定位，让其在流中 */
+        height: auto;
+        width: 100%;
+        filter: blur(3px); 
+        margin-top: 150px; /* 拉近与角色图片的距离 */
+    }
+    
+    .ruby-name-bg {
+        font-size: 35vw; /* 调整字体大小以适应小屏幕 */
+        transform: none; 
+    }
+    
+    /* 3. 角色图片调整 */
+    .ruby-character-img {
+        width: 230px; /* 缩小角色图片 */
+        margin-top: 50px; /* 与 RUBY 名字的间距 */
+        z-index: 20;
+    }
+    
+    /* 4. 光圈调整 */
+    .ruby-halo {
+        /* 缩小光圈尺寸 */
+        width: 350px;
+        height: 350px;
+        filter: blur(20px);
+        top: 10%; 
+        left: 10%;
+        transform: translate(-50%, -50%);
+        z-index: 15;
+    }
+
+    /* 5. 信息卡片调整 (关键：堆叠显示) */
+    .info-card {
+        position: static; /* 关键：从绝对定位改为相对定位 */
+        border-radius: 50%; /* 改为圆角矩形，更适合堆叠 */
+    }
+    
+    /* 调整卡片内容大小以适应手机 */
+    .card-title, .card-content {
+        font-size: 1.4rem; 
+    }
+
+    /* 7. SEE ALL 按钮调整 */
+    .see-all-btn {
+        bottom: 20px; /* 靠近底部 */
+    }
+
+    /* --- 滚动内容区域调整 --- */
+    
+    /* 隐藏固定图片容器 */
+    #character-pin-container {
+      display: none; /* 移动端通常禁用固定/粘性元素，以免遮挡内容 */
+      opacity: 0 !important;
+    }
+
+    .detail-section {
+       min-height: auto; /* 关键：高度根据内容自适应 */
+       padding: 50px 5%; /* 顶部填充 50px */
+       padding-bottom: 120px;
+    }
+
+    .content-wrapper {
+      flex-direction: column; /* 垂直堆叠：图片 -> 文本 */
+    }
+    
+    .text-block {
+      width: 90%; /* 文本占据全部宽度 */
+      padding: 0 5px; /* 调整填充 */
+      order: 1 !important; /* 关键：文本内容总是在底部 */
+      text-align: justify; /* 文本左对齐，更易读 */
+      font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .pinned-char-img {
+      width: 200px; /* 或者您希望的任何合适的小尺寸，例如 200px */
+      height: auto;
+    }
+
+    #character-pin-container {
+      left: 50%; /* 确保它在屏幕上居中 */
+      transform: translate(-50%, -50%);
+    }
+
+    .character-placeholder {
+      width: 80%; /* 占位符占据全部宽度 */
+      order: 0 !important; /* 关键：图片占位符总是在顶部 */
+      margin-bottom: 20px;
+    }
+
+    /* 关键修复：解除对 Section 内部图片的隐藏，确保它们在移动端显示 */
+    .detail-section .section-char-img {
+        opacity: 1; /* 关键：设置为 1，使其可见 */
+        pointer-events: auto;
+        transition: none;
+    }
+
+    .section-char-img {
+      width: 50%; /* 缩小 section 内部的图片 */
+      margin: 0 auto;
+      display: block;
+    }
+
+    /* 移除左右侧的定位覆盖，因为现在是垂直堆叠 */
+    .right-character-section .text-block,
+    .left-character-section .text-block,
+    .right-character-section .character-placeholder,
+    .left-character-section .character-placeholder {
+        order: unset; 
+    }
+
+    /* --- 波浪分割效果调整 --- */
+    .wave-bg::before {
+        position: fixed;
+        height: 800px; /* 减小波浪背景的高度 */
+        background-size: 500% 100%; 
+        transform: translateY(5px); /* 调整位置 */
+    }
+
+    /* --- GIF 装饰调整 --- */
+    .detail-section::after {
+        background: none !important; /* 关键：在移动端移除所有 GIF 装饰，以提高性能和可读性 */
+    }
+
+    /* --- 底部按钮调整 --- */
+    .start-button {
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 10px 20px;
+      margin: 30px auto 20px auto; /* 居中并调整间距 */
+      width: 80%;
+      box-sizing: border-box;
+      margin-left: auto;
+      display: flex; /* 确保居中 */
+    }
+    
+    .ruby-icon {
+      width: 35px;
+      height: 45px;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 850px) {
+
+  /* Any elements that originally used Vanilla Caramel were changed to Winky Sans on the phone */
+  [style*="Vanilla Caramel"],
+  .info-card,
+  .section-title,
+  .start-button
+   {
+    font-family: "Winky Sans", sans-serif !important;
+  }
+}

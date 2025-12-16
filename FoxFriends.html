@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Starkit</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="about.css" />
+  <link rel="stylesheet" href="quiz.css" />
+  <link rel="stylesheet" href="postit!.css" />
+  <link rel="stylesheet" href="foxfriends.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/vanilla-caramel" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Winky+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/kiara-demo" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="Starkit Logo" /></a>
+      </div>
+
+      <!-- Hamburger Icon -->
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span><span></span><span></span>
+      </div>
+
+      <!-- Nav Buttons-->
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="FoxFriends.html">Fox Friends</a></li>
+        <li><a href="postit!.html">Post It!</a></li>
+      </ul>
+
+      <!-- Nav Buttons (Right Side) -->
+      <div class="nav-buttons">
+        <a href="quiz.html" class="quiz-btn">Take the Quiz</a>
+        <a href="#" class="login-btn">Log In</a>
+        <img id="nav-avatar" class="nav-avatar" src="" alt="User Avatar" />
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="main-content">
+
+    <!-- Intro Section -->
+    <section class="intro-section">
+      <div class="intro-bg"></div>
+
+      <div class="intro-header">
+        <h1 class="intro-title">FOUR FRIENDS, FOUR FOXES~</h1>
+        <p class="intro-subtitle">Let's Meet the Foxes Who Grow With You!</p>
+      </div>
+
+      <div class="flip-container">
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front" style="background-image:url('images/foxfriends/ruby.f.png');"></div>
+            <div class="flip-back" style="background-image:url('images/foxfriends/ruby.b.png');"></div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front" style="background-image:url('images/foxfriends/sunny.f.png');"></div>
+            <div class="flip-back" style="background-image:url('images/foxfriends/sunny.b.png');"></div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front" style="background-image:url('images/foxfriends/willy.f.png');"></div>
+            <div class="flip-back" style="background-image:url('images/foxfriends/willy.b.png');"></div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front" style="background-image:url('images/foxfriends/snowy.f.png');"></div>
+            <div class="flip-back" style="background-image:url('images/foxfriends/snowy.b.png');"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fox Friends Section -->
+    <section class="fox-friends-section hidden" id="foxFriendsSection">
+      <div id="loopBlob" class="loop-blob" aria-hidden="true"></div>
+
+      <!-- =========================
+           STATIC LAYER (does NOT move)
+           - background blob image
+           - big name text (only color/text changes)
+      ========================== -->
+      <div class="static-character-bg" aria-hidden="true">
+        <img id="staticBgImage" src="images/foxfriends/e1.png" alt="" />
+        <h2 id="staticCharacterName" class="character-name ruby-name">RUBY</h2>
+      </div>
+
+      <!-- =========================
+           MOVING LAYER (only this moves)
+           - character image
+           - oval shadow
+           - left/right description boxes + connectors
+      ========================== -->
+      <div class="moving-layer" id="movingLayer">
+        <!-- main character -->
+        <div id="characterWrap">
+  <img id="mainCharacterImg" class="character-image" alt="">
+  <!-- <div id="mainCharacterShadow" class="character-base ruby-base"></div> -->
+  <!-- <img id="mainCharacterShadow" src="images/foxfriends/base1.png" class="shadow-img" alt="Shadow" /> -->
+</div>
+
+<img id="mainCharacterShadow" src="images/foxfriends/base1.png" class="shadow-img" alt="Shadow" />
+
+
+        <!-- left description -->
+        <div id="descLeft" class="description-box left ruby-desc-1">
+          <span class="connector left" aria-hidden="true">
+            <span class="h"></span>
+            <span class="turn"></span>
+            <span class="dot"></span>
+          </span>
+          <span id="descLeftText">
+            Ruby is <b>brave, confident, and full of bright energy</b>. She loves to try new things and
+            lead others with courage.
+          </span>
+        </div>
+
+        <!-- right description -->
+        <div id="descRight" class="description-box right ruby-desc-2">
+          <span class="connector right" aria-hidden="true">
+            <span class="h"></span>
+            <span class="turn"></span>
+            <span class="dot"></span>
+          </span>
+          <span id="descRightText">
+            When things get tough, Ruby reminds us to <b>stay strong and keep believing in ourselves</b>.
+          </span>
+        </div>
+      </div>
+
+      <!-- =========================
+           DATA / INDEX TRACK (kept for your carousel logic)
+           This is not displayed visually; JS uses these slides to know which fox is active.
+      ========================== -->
+      <div class="character-carousel" id="characterCarousel" aria-hidden="true">
+
+        <div class="character-slide"
+          data-name="ruby"
+          data-display="RUBY"
+          data-image="images/foxfriends/ruby.png"
+          data-bg="images/foxfriends/e1.png"
+          
+          data-left-class="ruby-desc-1"
+          data-right-class="ruby-desc-2"
+          data-button-color="#D13F00"
+          data-desc-left="Ruby is <b>brave, confident, and full of bright energy</b>. She loves to try new things and lead others with courage."
+          data-desc-right="When things get tough, Ruby reminds us to <b>stay strong and keep believing in ourselves</b>.">
+        </div>
+
+        <div class="character-slide"
+          data-name="sunny"
+          data-display="SUNNY"
+          data-image="images/foxfriends/sunny.png"
+          data-bg="images/foxfriends/e2.png"
+          data-left-class="sunny-desc-1"
+          data-right-class="sunny-desc-2"
+          data-button-color="#DAA300"
+          data-desc-left="Sunny is <b>cheerful, creative, and full of imagination</b>. She loves to explore new ideas, express herself through colors and stories, and share her joy with others."
+          data-desc-right="When things feel dull or quiet, Sunny brings <b>warmth and creativity</b> to make everything shine again.">
+        </div>
+
+        <div class="character-slide"
+          data-name="willy"
+          data-display="WILLY"
+          data-image="images/foxfriends/willy.png"
+          data-bg="images/foxfriends/e3.png"
+          data-left-class="willy-desc-1"
+          data-right-class="willy-desc-2"
+          data-button-color="#107A00"
+          data-desc-left="Willy is <b>calm, careful, and thoughtful</b>. She likes to take her time, think things through, and make sure everything is done the right way."
+          data-desc-right="Willy brings <b>peace and balance</b> to her friends, showing that being <b>steady and kind</b> is its own kind of strength.">
+        </div>
+
+        <div class="character-slide"
+          data-name="snowy"
+          data-display="SNOWY"
+          data-image="images/foxfriends/snowy.png"
+          data-bg="images/foxfriends/e4.png"
+          data-left-class="snowy-desc-1"
+          data-right-class="snowy-desc-2"
+          data-button-color="#004C87"
+          data-desc-left="Snowy is <b>kind, gentle, and full of empathy</b>. She loves quiet places where she can think deeply and understand the world around her."
+          data-desc-right="With her <b>soft voice and caring heart</b>, she reminds us that being gentle is not a weakness but a strength that <b>brings peace and warmth to others</b>.">
+        </div>
+
+      </div>
+
+      <!-- Nav buttons -->
+      <button class="nav-button prev-button" id="prevButton" aria-label="Previous">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <button class="nav-button next-button" id="nextButton" aria-label="Next">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+
+      <!-- Preview -->
+      <img src="" alt="Previous Fox" class="fox-preview-left" id="prevFoxImage" />
+      <img src="" alt="Next Fox" class="fox-preview-right" id="nextFoxImage" />
+
+      <!-- SEE MORE -->
+      <a href="FoxDetailsRuby.html" class="see-more-btn" id="seeMoreButton">
+        SEE MORE ↗
+      </a>
+
+    </section>
+  </main>
+
+  <!-- Login Overlay -->
+  <div class="overlay" id="overlay">
+    <div class="login-card">
+      <div class="icon">
+        <img src="images/login/user.png" alt="User Icon" />
+      </div>
+      <h2>Log In</h2>
+      <div class="msg" id="msg"></div>
+
+      <form id="loginForm" onsubmit="return false;">
+        <div class="field">
+          <input type="text" id="uname" placeholder="Email" />
+          <img src="images/login/user.png" class="icon-imgs" />
+        </div>
+        <div class="field">
+          <input type="password" id="pass" placeholder="Password" />
+          <img src="images/login/pw.png" class="icon-img" />
+        </div>
+
+        <div class="divider"><span></span> OR <span></span></div>
+
+        <button class="google-btn" id="googleLogin">
+          <img src="images/login/google.png" alt="Google Logo" /> Sign in with Google
+        </button>
+
+        <div class="btn-container">
+          <input type="submit" id="login-btn" value="Log In" />
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <img src="images/logo.png" alt="Starkit Logo" />
+        <p class="footer-slogan">“Discover your inner fox,<br>guided by your star.”</p>
+      </div>
+
+      <div class="footer-center">
+        <h3>Quick Links</h3>
+        <div class="links-grid">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+          <ul>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li><a href="FoxFriends.html">Fox Friends</a></li>
+          </ul>
+          <ul>
+            <li><a href="postit!.html">Post It!</a></li>
+            <li><a href="#">⋆˚☆˖°⋆｡° ✮˖.˚</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <h3>Contact Us</h3>
+        <p><span>Email:</span> <a href="mailto:starkit.support@gmail.com">starkit.support@gmail.com</a></p>
+        <div class="social-icons">
+          <a href="#"><img src="images/footer/ins.png" alt="Instagram" /></a>
+          <a href="#"><img src="images/footer/xhs.png" alt="Xiaohongshu" /></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Starkit. All Rights Reserved.</div>
+  </footer>
+
+  <!-- Google Sign In -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: "53254119460-3hj1559jtb4c2kthhqjijokjevjk8ua4.apps.googleusercontent.com",
+        callback: handleCredentialResponse
+      });
+    };
+  </script>
+
+  <div id="g_id_onload"
+    data-client_id="53254119460-3hj1559jtb4c2kthhqjijokjevjk8ua4.apps.googleusercontent.com"
+    data-callback="handleCredentialResponse">
+  </div>
+
+  <div id="user-info" style="display:none;">
+    <img id="avatar" src="" alt="Avatar" />
+    <p id="name"></p>
+    <p id="email"></p>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+  <script src="about.js"></script>
+  <script src="quiz.js"></script>
+  <script src="postit!.js"></script>
+  <script src="foxfriends.js"></script>
+
+</body>
+
+</html>
