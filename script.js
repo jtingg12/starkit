@@ -1,10 +1,11 @@
-// ---------------- Navbar Elements ----------------
+// ---------------- Navbar & UI Elements ----------------
 const navbar = document.getElementById('navbar');
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
 const navButtons = document.querySelector('.nav-buttons');
 const backToTop = document.createElement('button');
 
+// Navbar Scroll Logic
 window.addEventListener('scroll', () => {
   if (window.scrollY > 50) {
     navbar.classList.add('scrolled');
@@ -45,18 +46,16 @@ if (menuToggle) {
   });
 }
 
-// ---------------- Login Overlay ----------------
+// ---------------- Login Overlay & Fake User Logic ----------------
 const overlay = document.getElementById('overlay');
 const openLogin = document.querySelector('.login-btn');
 const btn = document.getElementById('login-btn');
-const form = document.getElementById('loginForm');
 const uname = document.getElementById('uname');
 const pass = document.getElementById('pass');
 const msg = document.getElementById('msg');
 
 if (btn) btn.disabled = true;
 
-// --- 严格保留你的 showMsg 逻辑 ---
 function showMsg() {
   const isEmpty = uname.value === '' || pass.value === '';
   btn.classList.toggle('no-shift', !isEmpty);
@@ -77,12 +76,14 @@ function showMsg() {
 if (uname) uname.addEventListener('input', showMsg);
 if (pass) pass.addEventListener('input', showMsg);
 
-// 修改点击逻辑：如果已登录，点击按钮就是登出；未登录才是弹窗
+// 点击导航栏 Login/Logout 按钮
 if (openLogin) {
   openLogin.addEventListener('click', (e) => {
     if (localStorage.getItem('starkit_user')) {
+      // 如果已经登录，点击就是 Logout
       signOut();
     } else {
+      // 没登录，显示弹窗
       e.preventDefault();
       overlay.classList.add('active');
     }
@@ -95,7 +96,7 @@ if (overlay) {
   });
 }
 
-// --- 严格保留你的 Login Click 逻辑，仅增加持久化存储 ---
+// Fake User 登录逻辑
 if (btn) {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -108,16 +109,14 @@ if (btn) {
 
       const fakeUser = {
         name: email.split('@')[0],
-        email: email,
         picture: 'images/login/fakeuser.png'
       };
 
-      // 统一存入 localStorage
       localStorage.setItem('starkit_user', JSON.stringify(fakeUser));
 
       setTimeout(() => {
         overlay.classList.remove('active');
-        location.reload(); // 刷新以应用状态
+        location.reload(); 
       }, 800);
     } else {
       msg.innerText = 'Please fill in all fields!';
@@ -126,7 +125,7 @@ if (btn) {
   });
 }
 
-// ---------------- Google Login Persistence ----------------
+// ---------------- Google Login Logic ----------------
 function decodeJwtResponse(token) {
   let base64Url = token.split('.')[1];
   let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -135,25 +134,29 @@ function decodeJwtResponse(token) {
   return JSON.parse(jsonPayload);
 }
 
-// Google 回调统一使用 starkit_user 键名存入 localStorage
+// Google 登录成功的回调
 window.handleCredentialResponse = (response) => {
   const userObject = decodeJwtResponse(response.credential);
+  
+  // 同样存入 starkit_user，格式和 Fake User 保持一致
   localStorage.setItem('starkit_user', JSON.stringify({
     name: userObject.name,
-    picture: userObject.picture
+    picture: userObject.picture // 这是 Google 提供的头像 URL
   }));
-  location.reload();
+  
+  location.reload(); 
 };
 
+// 弹窗里的 Google 按钮点击
 const googleLoginBtn = document.getElementById('googleLogin');
 if (googleLoginBtn) {
   googleLoginBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    google.accounts.id.prompt(); 
+    google.accounts.id.prompt(); // 弹出 Google 选择框
   });
 }
 
-// ---------------- 核心修复：检查并更新 UI ----------------
+// ---------------- 核心：UI 状态管理 ----------------
 function checkLoginStatus() {
   const userJson = localStorage.getItem('starkit_user');
   const navAvatar = document.getElementById('nav-avatar');
@@ -161,17 +164,17 @@ function checkLoginStatus() {
 
   if (userJson) {
     const user = JSON.parse(userJson);
-    // 1. Log In 文字变 Logout
+    // 登录后：文字变 Log Out，显示头像
     if (loginBtnText) {
       loginBtnText.textContent = 'Log Out';
       loginBtnText.href = "javascript:void(0)";
     }
-    // 2. 显示头像 (保留你原本 nav-avatar 的引用)
     if (navAvatar) {
       navAvatar.src = user.picture;
       navAvatar.style.display = 'inline-block';
     }
   } else {
+    // 登出后：文字变 Log In，隐藏头像
     if (loginBtnText) loginBtnText.textContent = 'Log In';
     if (navAvatar) navAvatar.style.display = 'none';
   }
@@ -179,15 +182,13 @@ function checkLoginStatus() {
 
 function signOut() {
   if (confirm("Log Out from Starkit?")) {
-    // 1. 清除本地存储
     localStorage.removeItem('starkit_user');
     
-    // 2. (可选) 告诉 Google 暂时不要自动选择账号，这样下次登录可以选别的 Google 号
+    // 让 Google 账户下次可以重新被选择
     if (typeof google !== 'undefined') {
       google.accounts.id.disableAutoSelect();
     }
-
-    // 3. 刷新页面
+    
     location.reload();
   }
 }
@@ -195,14 +196,13 @@ function signOut() {
 // ---------------- 初始化 ----------------
 document.addEventListener('DOMContentLoaded', () => {
   setActiveNavItem();
-  checkLoginStatus(); // 页面加载自动检查
+  checkLoginStatus(); 
 
-  // --- 原有逻辑块包起来以防报错 ---
   initCarousel();
   initFAQ();
 });
 
-// ---------------- 以下完全是你原本的 Fox Friends, Carousel 和 FAQ 逻辑 ----------------
+// ---------------- 原有的 FAQ & Carousel ----------------
 function initCarousel() {
   const carousel = document.getElementById('stickyCarousel');
   const items = document.querySelectorAll('.sticky-carousel img');
@@ -223,12 +223,11 @@ function initCarousel() {
 
 function initFAQ() {
   const questions = document.querySelectorAll(".faq-question");
-  questions.forEach(question => {
-    question.addEventListener("click", () => {
-      question.classList.toggle("active");
-      const icon = question.querySelector(".icon");
-      if (icon) icon.textContent = question.classList.contains("active") ? "-" : "▾";
+  questions.forEach(q => {
+    q.addEventListener("click", () => {
+      q.classList.toggle("active");
+      const icon = q.querySelector(".icon");
+      if (icon) icon.textContent = q.classList.contains("active") ? "-" : "▾";
     });
   });
 }
-
