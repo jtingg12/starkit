@@ -179,7 +179,15 @@ function checkLoginStatus() {
 
 function signOut() {
   if (confirm("Log Out from Starkit?")) {
+    // 1. 清除本地存储
     localStorage.removeItem('starkit_user');
+    
+    // 2. (可选) 告诉 Google 暂时不要自动选择账号，这样下次登录可以选别的 Google 号
+    if (typeof google !== 'undefined') {
+      google.accounts.id.disableAutoSelect();
+    }
+
+    // 3. 刷新页面
     location.reload();
   }
 }
@@ -223,3 +231,4 @@ function initFAQ() {
     });
   });
 }
+
